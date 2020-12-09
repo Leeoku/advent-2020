@@ -19,6 +19,8 @@
 
 
 from collections import Counter
+from itertools import combinations
+from math import prod
 
 values = Counter()
 nums = []
@@ -26,24 +28,30 @@ with open('day1.txt') as f:
     for line in f:
         nums.append(int(line.strip('\n')))
 
-# def part_one(nums):
-#     print(nums)
-#     for num in nums:
-#         difference = 2020 - num
-#         if difference in values:
-#             final = difference * num
-#             print(f"SOLUTION IS {final}")
-#             return(num,difference)
-#         values[num] += 1
-# expense_report(nums)
+def part_one(nums):
+    print(nums)
+    for num in nums:
+        difference = 2020 - num
+        if difference in values:
+            final = difference * num
+            print(f"SOLUTION IS {final}")
+            return(num,difference)
+        values[num] += 1
+
+
+#Alternate using combination library
+# def solve(length):
+#     for c in combinations(nums, length):
+#         print(c)
+#         if sum(c) == 2020:
+#             print(prod(c))
+#             return prod(c)
 
 # Part 2
 # Using the above example again, the three entries that sum to 2020 are 979, 366, and 675. Multiplying them together produces the answer, 241861950.
 
 # In your expense report, what is the product of the three entries that sum to 2020?
 
-def part_two(nums):
-    print(nums)
     for x, i in enumerate(nums):
         for j in nums[x:]:
             if (2020-i-j) in values:
@@ -55,3 +63,4 @@ def part_two(nums):
 if __name__ == "__main__":
     # part_one(nums)
     part_two(nums)
+    # solve(2), solve(3)
