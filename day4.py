@@ -30,13 +30,7 @@ def second_validate_passport(passports):
     second_count = 0
     filtered_passports = passports[0]
     for passport in filtered_passports:
-        # birth_check(int(passport["byr"]))
-        # issue_year_check(int(passport["iyr"]))
-        # expiry_year_check(int(passport["eyr"])) 
-        # height_check(passport["hgt"]) 
-        # hair_check(passport["hcl"]) 
-        # eye_check(passport["ecl"])
-        # passport_id_check(passport["pid"])
+        #We expect all the function checks to return True/False
         if (birth_check(int(passport["byr"])) and
         issue_year_check(int(passport["iyr"])) and
         expiry_year_check(int(passport["eyr"])) and
@@ -47,7 +41,8 @@ def second_validate_passport(passports):
         ):
             second_count+=1
     print(second_count)
-
+    return(second_count)
+    
 def birth_check(birth_year):
     return 1920 <= birth_year <= 2002
 
